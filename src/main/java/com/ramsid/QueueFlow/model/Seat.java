@@ -3,6 +3,9 @@ package com.ramsid.QueueFlow.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -23,13 +26,20 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seatId;
 
+
+    @Column(nullable = false, length = 10)
     private String rowNumber;
 
+    @Column(nullable = false)
     private int seatNumber;
 
+    @Column(nullable = false, length = 30)
     private String seatType;
 
     @ManyToOne
     @JoinColumn(name = "screen_id", nullable = false)
     private Screen screen;
+     @OneToMany(mappedBy = "seat")
+    private List<ShowSeat> showSeats = new ArrayList<>();
+
 }
