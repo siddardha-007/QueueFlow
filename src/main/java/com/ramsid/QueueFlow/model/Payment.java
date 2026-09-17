@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class Payment {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentId;
+     private Long paymentId;
 
      @Column(nullable = false, length = 100, unique = true)
      private String transactionId;
